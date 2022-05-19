@@ -1,0 +1,30 @@
+.container {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 20px 40px;
+}
+
+.image {
+    border: 2px groove #FDC830 !important;
+    border-radius: 3px; 
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #F37335;
+}
+
+.price {
+    font-style: 18px;
+    font-weight: bold;
+    color: #666;
+}
+
+.description {
+    text-align: center;
+    color: #777;
+}
