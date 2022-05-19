@@ -1,0 +1,27 @@
+.container {
+    height: 240px;
+    background-color: rgb(50, 48, 48);
+    display: flex;
+}
+
+.card {
+    flex: 1;
+    padding: 20px;
+    position: relative;
+}
+
+.title {
+    font-size: 18px;
+    color: #b7903c;
+}
+
+.text {
+    color: lightgray;
+}
+
+.icon {
+    color: lightgray;
+    max-width: 30px;
+    max-height: 30px;
+    margin: 20px 0;
+}

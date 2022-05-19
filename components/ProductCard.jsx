@@ -8,8 +8,8 @@ const ProductCard = () => {
         className={styles.image}
         src="/images/palaw.jpg"
         alt=""
-        width="300"
-        height="300"
+        width="200"
+        height="200"
       />
       <h1 className={styles.title}>Palow</h1>
       <span className={styles.price}>$19.90</span>

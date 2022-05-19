@@ -8,8 +8,11 @@
 
 .description {
     font-size: 24px;
-    color: #444;
+    color: #fda830;
     width: 70%;
+    text-align: center;
+    font-style: italic;
+    font-weight: 700;
 }
 
 .wrapper {
@@ -19,4 +22,3 @@
     flex-wrap: wrap;
     width: 80%;
 }
-
