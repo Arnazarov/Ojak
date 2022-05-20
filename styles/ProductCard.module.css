@@ -8,14 +8,14 @@
 }
 
 .image {
-    border: 1px solid #b7903c !important;
+    border: 1px solid #eea92a !important;
     border-radius: 2px; 
 }
 
 .title {
     font-size: 18px;
     font-weight: bold;
-    color: #b7903c;
+    color: #eea92a;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 

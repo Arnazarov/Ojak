@@ -7,7 +7,7 @@ const Header = () => {
       <div className={styles.item}>
         <div className={styles.callBtn}>
           <Image
-            src="/images/telephone.png"
+            src="/images/callBtn.png"
             alt="call button"
             width="32"
             height="32"

@@ -1,6 +1,6 @@
 .container {
-    height: 240px;
-    background-color: rgb(50, 48, 48);
+    height: 260px;
+    background-color: #444444;
     display: flex;
 }
 
@@ -12,15 +12,15 @@
 
 .title {
     font-size: 18px;
-    color: #D1913C;
+    color: #eea92a;
 }
 
 .text {
-    color: lightgray;
+    color: #eee;
 }
 
 .icon {
-    color: lightgray;
+    color: #eee;
     max-width: 30px;
     max-height: 30px;
     margin: 20px 0;
