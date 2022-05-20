@@ -8,14 +8,14 @@
 }
 
 .image {
-    border: 5px ridge #FDC830 !important;
-    border-radius: 3px; 
+    border: 1px solid #b7903c !important;
+    border-radius: 2px; 
 }
 
 .title {
     font-size: 18px;
     font-weight: bold;
-    color: #F37335;
+    color: #D1913C;
 }
 
 .price {
