@@ -22,7 +22,6 @@
     flex-direction: column;
     justify-content: space-between;
     color: #eee;
-    margin-top: 20px;
     box-shadow: inset 1px 1px 1px 2px #fff;
 }
 
@@ -56,12 +55,12 @@
 .table {
     border-spacing: 10px;
     width: 80%;
-    text-align: center;
+    text-align: left;
     margin-bottom: 50px;
 }
 
 .row:last-child {
-    width: 80%;
+    width: 75%;
     display: flex;
     justify-content: space-evenly;
 }
@@ -110,7 +109,7 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
-        align-items: start;
+        align-items: flex-start;
     }
 
     .right {

@@ -40,13 +40,13 @@ const Footer = () => {
       <div className={styles.card}>
         <h1 className={styles.title}>FIND US</h1>
         <div className={styles.icon}>
-          <FontAwesomeIcon icon={faFacebook} />
+          <FontAwesomeIcon className={styles.icon} icon={faFacebook} />
         </div>
         <div className={styles.icon}>
-          <FontAwesomeIcon icon={faInstagram} />
+          <FontAwesomeIcon className={styles.icon} icon={faInstagram} />
         </div>
         <div className={styles.icon}>
-          <FontAwesomeIcon icon={faTwitter} />
+          <FontAwesomeIcon className={styles.icon} icon={faTwitter} />
         </div>
       </div>
     </div>

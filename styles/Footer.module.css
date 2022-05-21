@@ -21,9 +21,11 @@
 
 .icon {
     color: #eee;
+    min-width: 25px;
+    min-height: 25px;
     max-width: 40px;
     max-height: 40px;
-    margin: 20px 0;
+    margin: 10px 0;
 }
 
 @media screen and (max-width: 480px) {
@@ -52,7 +54,7 @@
         margin: 5px 0;
         margin-left: 20px;
         max-width: 25px;
-    max-height: 25px;
+        max-height: 25px;
     }
 
     .title {
