@@ -6,13 +6,13 @@ const Cart = () => {
     <div className={styles.container}>
       <div className={styles.left}>
         <table className={styles.table}>
-          <thead>
+          <thead className={styles.thead}>
             <tr>
               <th>Dish</th>
               <th>Name</th>
               <th>Size</th>
               <th>Price</th>
-              <th>Quantity</th>
+              <th>Qty</th>
               <th>Total</th>
             </tr>
           </thead>

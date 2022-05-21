@@ -29,3 +29,22 @@
     text-align: center;
     color: #777;
 }
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%;
+    }
+
+    .image {
+        border-radius: 15px;
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .price,
+    .description {
+        font-size: 18px;
+    }
+}

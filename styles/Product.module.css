@@ -36,7 +36,7 @@
 }
 
 .imgContainer img {
-    border-radius: 10px 0 0 1px;
+    border-radius: 10px 0 0 10px;
 }
 
 
@@ -115,9 +115,51 @@
     height: 25px;
     background-color: #b7903c;
     color:white;
-    border: 1px solid black;
     border-radius: 0 15px 15px 0;
     font-weight: 500;
     cursor: pointer;
     padding: 0 20px;
+}
+
+@media screen and (max-width: 480px) {
+    .card {
+        padding-bottom: 10px;
+        height: auto;
+        text-align: center;
+        flex-direction: column;
+    }
+
+    .imgContainer {
+        height: 30vh;
+    }
+
+    .imgContainer img {
+        border-radius: 10px 10px 0 0;
+    }
+    
+    .title {
+        margin: 5px;
+    }
+
+    .desc {
+        font-size: 16px;
+    }
+
+    .sizes {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+
+    .option {
+        justify-content: center;
+    }
+
+    .button, .quantity {
+        margin-top: 20px;
+        height: 40px;
+    }
+
+    .choose {
+        margin-top: 30px;
+    }
 }

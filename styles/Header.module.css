@@ -83,3 +83,12 @@
     font-weight: bold;
     color: #eea92a;
 }
+
+@media screen and (max-width: 480px) {
+    .item:nth-child(2) {
+        display: none;
+    }
+    .item:first-child {
+        flex: 3;
+    }
+}

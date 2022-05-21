@@ -21,7 +21,43 @@
 
 .icon {
     color: #eee;
-    max-width: 30px;
-    max-height: 30px;
+    max-width: 40px;
+    max-height: 40px;
     margin: 20px 0;
+}
+
+@media screen and (max-width: 480px) {
+    .card:first-child {
+        display: none;
+    }
+
+    .card {
+        padding: 0;
+        margin: 0;
+    }
+
+    .card:last-child {
+        margin-bottom: 10px;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        height:auto;
+        text-align: center;
+        align-items: center;
+    }
+
+    .icon {
+        margin: 5px 0;
+        margin-left: 20px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .text {
+        font-size: 16px;
+    }
 }

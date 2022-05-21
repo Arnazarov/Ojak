@@ -54,7 +54,6 @@ const Product = () => {
               type="radio"
               id="beef"
               name="meat"
-              checked
               className={styles.checkbox}
             />
             <label htmlFor="beef">Beef</label>
