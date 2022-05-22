@@ -1,37 +1,33 @@
 import Image from 'next/image';
 import styles from '../../styles/Product.module.css';
 import { useState } from 'react';
+import axios from 'axios';
+const URI = process.env.URI;
 
-const Product = () => {
+const Product = ({ product }) => {
   const [size, setSize] = useState(0);
-
-  const item = {
-    id: 1,
-    img: '/images/palaw.jpg',
-    name: 'PALOW',
-    price: [19.9, 27.9],
-    desc: 'Legendary national rice dish cooked in a traditional cast-iron kazan.',
-  };
+  const [meatOption, setMeatOption] = useState('Beef');
+  const [qty, setQty] = useState(1);
 
   return (
     <div className={styles.container}>
       <div className={styles.card}>
         <div className={styles.left}>
           <div className={styles.imgContainer}>
-            <Image src={item.img} alt="" layout="fill" objectFit="cover" />
+            <Image src={product.img} alt="" layout="fill" objectFit="cover" />
           </div>
         </div>
         <div className={styles.right}>
-          <h1 className={styles.title}>{item.name}</h1>
+          <h1 className={styles.title}>{product.name}</h1>
 
-          <p className={styles.desc}>{item.desc}</p>
-          <span className={styles.price}>${item.price[size]}</span>
+          <p className={styles.desc}>{product.desc}</p>
+          <span className={styles.price}>${product.price[size]}</span>
           <h3 className={styles.choose}>Select size:</h3>
           <div className={styles.sizes}>
             <div
               className={styles.size}
               onClick={() => {
-                setSize(0);
+                handlePrice(0);
               }}
             >
               <Image src="/images/size.png" layout="fill" alt="" />
@@ -40,42 +36,42 @@ const Product = () => {
             <div
               className={styles.size}
               onClick={() => {
-                setSize(1);
+                handlePrice(1);
               }}
             >
               <Image src="/images/size.png" layout="fill" alt="" />
               <span className={styles.number}>Large</span>
             </div>
           </div>
-          <h3 className={styles.choose}>Select meat:</h3>
-          <div className={styles.option}>
-            <input
-              type="radio"
-              id="beef"
-              name="meat"
-              className={styles.checkbox}
-            />
-            <label htmlFor="beef">Beef</label>
 
-            <input
-              type="radio"
-              id="lamb"
-              name="meat"
-              className={styles.checkbox}
-            />
-            <label htmlFor="lamb">Lamb</label>
-
-            <input
-              type="radio"
-              id="chicken"
-              name="meat"
-              className={styles.checkbox}
-            />
-            <label htmlFor="chicken">Chicken</label>
-          </div>
+          {product.meat.length > 0 && (
+            <>
+              <h3 className={styles.choose}>Select meat:</h3>
+              <div className={styles.option}>
+                {product.meat.map((m, index) => (
+                  <div key={index}>
+                    <input
+                      type="radio"
+                      id={m}
+                      name="meat"
+                      className={styles.checkbox}
+                      onChange={() => setMeatOption(m)}
+                    />
+                    <label htmlFor={m}>{m}</label>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
 
           <div className={styles.add}>
-            <input type="number" defaultValue={1} className={styles.quantity} />
+            <input
+              type="number"
+              min={1}
+              defaultValue={1}
+              className={styles.quantity}
+              onChange={(e) => setQty(e.target.value)}
+            />
             <button className={styles.button}>Add to Cart</button>
           </div>
         </div>
@@ -83,5 +79,13 @@ const Product = () => {
     </div>
   );
 };
+
+export async function getServerSideProps({ params }) {
+  const { id } = params;
+  const { data } = await axios.get(`${URI}/api/products/${id}`);
+  return {
+    props: { product: data },
+  };
+}
 
 export default Product;
