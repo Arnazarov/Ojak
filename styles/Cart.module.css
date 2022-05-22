@@ -11,6 +11,7 @@
 
 .right {
     flex: 1;
+    
 }
 
 .table {
@@ -49,8 +50,8 @@
 }
 
 .wrapper {
-    width: 90%;
-    max-height: 300px;
+    width: auto;
+    height: auto;
     background-color: #444;
     padding: 30px;
     padding-top: 10px;
@@ -80,12 +81,16 @@
     font-weight: 800;
     margin-top: 20px;
     border: 1px solid #ddd !important;
-    border-radius: 25px;
+    border-radius: 4px;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 .cartTitle {
     text-align: center;
+}
+
+.paymentMethods {
+    margin-top: 10px;
 }
 
 @media screen and (max-width: 480px) {
