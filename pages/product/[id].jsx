@@ -2,12 +2,20 @@ import Image from 'next/image';
 import styles from '../../styles/Product.module.css';
 import { useState } from 'react';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../redux/cart';
 const URI = process.env.URI;
 
 const Product = ({ product }) => {
   const [size, setSize] = useState(0);
   const [meatOption, setMeatOption] = useState('Beef');
   const [qty, setQty] = useState(1);
+
+  const dispatch = useDispatch();
+
+  const addToCartHandler = () => {
+    dispatch(addProduct({ ...product, meatOption, qty, size }));
+  };
 
   return (
     <div className={styles.container}>
@@ -27,7 +35,7 @@ const Product = ({ product }) => {
             <div
               className={styles.size}
               onClick={() => {
-                handlePrice(0);
+                setSize(0);
               }}
             >
               <Image src="/images/size.png" layout="fill" alt="" />
@@ -36,7 +44,7 @@ const Product = ({ product }) => {
             <div
               className={styles.size}
               onClick={() => {
-                handlePrice(1);
+                setSize(1);
               }}
             >
               <Image src="/images/size.png" layout="fill" alt="" />
@@ -70,9 +78,11 @@ const Product = ({ product }) => {
               min={1}
               defaultValue={1}
               className={styles.quantity}
-              onChange={(e) => setQty(e.target.value)}
+              onChange={(e) => setQty(Number(e.target.value))}
             />
-            <button className={styles.button}>Add to Cart</button>
+            <button className={styles.button} onClick={addToCartHandler}>
+              Add to Cart
+            </button>
           </div>
         </div>
       </div>

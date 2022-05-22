@@ -1,7 +1,11 @@
 import Image from 'next/image';
+import Link from 'next/link';
+import { useSelector } from 'react-redux';
 import styles from '../styles/Header.module.css';
 
 const Header = () => {
+  const { qty } = useSelector((state) => state.cart);
+
   return (
     <div className={styles.container}>
       <div className={styles.item}>
@@ -32,17 +36,19 @@ const Header = () => {
           <li className={styles.listItem}>Contact Us</li>
         </ul>
       </div>
-      <div className={styles.item}>
-        <div className={styles.cart}>
-          <Image
-            src="/images/cart.png"
-            alt="cart image"
-            width="30px"
-            height="30px"
-          />
-          <div className={styles.counter}>2</div>
+      <Link href="/cart">
+        <div className={styles.item}>
+          <div className={styles.cart}>
+            <Image
+              src="/images/cart.png"
+              alt="cart image"
+              width="30px"
+              height="30px"
+            />
+            <div className={styles.counter}>{qty}</div>
+          </div>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };
