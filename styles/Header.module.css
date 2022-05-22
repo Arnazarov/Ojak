@@ -92,3 +92,12 @@
         flex: 3;
     }
 }
+
+@media screen and (min-width: 480px) and (max-width:1015px) {
+    .item:nth-child(2) {
+        flex: 11;
+    }
+    .item:first-child {
+        display: none;
+    }
+}
