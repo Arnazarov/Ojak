@@ -4,7 +4,7 @@ import Slider from '../components/Slider'
 import styles from '../styles/Home.module.css'
 import axios from 'axios';
 
-const URI = process.env.URI;
+const URI = process.env.NEXT_PUBLIC_URI;
 
 export default function Home({data}) {
   return (

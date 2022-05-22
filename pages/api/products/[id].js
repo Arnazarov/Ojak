@@ -19,7 +19,6 @@ export default async function productApi(req, res) {
                     res.status(404).json('Product not found');  
                 }
             } catch(err) {
-                console.log(err.message);
                 res.status(500).json(err.message);
             }
 

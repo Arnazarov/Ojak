@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../../redux/cart';
-const URI = process.env.URI;
+const URI = process.env.NEXT_PUBLIC_URI;
 
 const Product = ({ product }) => {
   const [size, setSize] = useState(0);
