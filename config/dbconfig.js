@@ -23,7 +23,6 @@ async function dbConnect() {
     })
   }
   cached.conn = await cached.promise
-  console.log(`MongoDB connected ${cached.conn.connection.host}`.blue.underline);
   return cached.conn
 }
 

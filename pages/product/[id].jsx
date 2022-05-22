@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import styles from '../../styles/Product.module.css';
 import { useState } from 'react';
-import { faPizzaSlice } from '@fortawesome/free-solid-svg-icons';
 
 const Product = () => {
   const [size, setSize] = useState(0);

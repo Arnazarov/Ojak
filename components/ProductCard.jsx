@@ -1,21 +1,22 @@
 import styles from '../styles/ProductCard.module.css';
 import Image from 'next/image';
+import Link from 'next/link';
 
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
   return (
     <div className={styles.container}>
-      <Image
-        className={styles.image}
-        src="/images/palaw.jpg"
-        alt=""
-        width="200"
-        height="200"
-      />
-      <h1 className={styles.title}>Palow</h1>
-      <span className={styles.price}>$19.90</span>
-      <p className={styles.description}>
-        Legendary national rice dish cooked in a traditional cast-iron kazan.
-      </p>
+      <Link href={`/product/${product._id}`}>
+        <Image
+          className={styles.image}
+          src={product.img}
+          alt=""
+          width="200"
+          height="200"
+        />
+      </Link>
+      <h1 className={styles.title}>{product.title}</h1>
+      <span className={styles.price}>${product.price[0]}</span>
+      <p className={styles.description}>{product.desc}</p>
     </div>
   );
 };

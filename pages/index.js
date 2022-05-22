@@ -2,8 +2,11 @@ import Head from 'next/head'
 import ProductList from '../components/ProductList'
 import Slider from '../components/Slider'
 import styles from '../styles/Home.module.css'
+import axios from 'axios';
 
-export default function Home() {
+const URI = process.env.URI;
+
+export default function Home({data}) {
   return (
     <div className={styles.container}>
       <Head>
@@ -12,7 +15,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Slider />
-      <ProductList />
+      <ProductList productList={data} />
     </div>
   )
+}
+
+
+export async function getServerSideProps() {
+  const { data } = await axios.get(`${URI}/api/products`);
+  return {
+    props: {data}
+  };
 }
