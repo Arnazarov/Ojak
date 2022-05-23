@@ -124,7 +124,14 @@ const Index = ({ products, orders }) => {
   );
 };
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
+  const myCookie = context.req?.cookies || '';
+
+  if (myCookie.token != process.env.TOKEN) {
+    return {
+      redirect: { destination: '/admin/login', permanent: false },
+    };
+  }
   const { data: products } = await axios.get(`${URI}/api/products`);
   const { data: orders } = await axios.get(`${URI}/api/orders`);
 
