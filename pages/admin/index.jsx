@@ -1,9 +1,22 @@
 import axios from 'axios';
 import Image from 'next/image';
+import { useState } from 'react';
 import styles from '../../styles/Admin.module.css';
 const URI = process.env.NEXT_PUBLIC_URI;
 
-const index = ({ products, orders }) => {
+const Index = ({ products, orders }) => {
+  const [productList, setProductList] = useState(products);
+  const [orderList, setOrderList] = useState(orders);
+
+  const deleteBtnHandler = async (id) => {
+    try {
+      const { data } = await axios.delete(`${URI}/api/products/${id}`);
+      setProductList(productList.filter((product) => product._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.item}>
@@ -19,7 +32,7 @@ const index = ({ products, orders }) => {
             </tr>
           </thead>
           <tbody className={styles.tbody}>
-            {products.map((product) => (
+            {productList.map((product) => (
               <tr key={product._id}>
                 <td>
                   <Image
@@ -34,8 +47,15 @@ const index = ({ products, orders }) => {
                 <td>{product.title}</td>
                 <td>${product.price.join('-')}</td>
                 <td>
-                  <button className={styles.button}>Edit</button>
-                  <button className={styles.button}>Delete</button>
+                  <button className={styles.button} onClick={() => {}}>
+                    Edit
+                  </button>
+                  <button
+                    className={styles.button}
+                    onClick={() => deleteBtnHandler(product._id)}
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
@@ -85,4 +105,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default index;
+export default Index;
