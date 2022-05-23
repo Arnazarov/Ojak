@@ -4,7 +4,7 @@ import Order from "../../../models/Order";
 dbConnect();
 export default async function orderApi(req, res) {
 
-    const {method, query: {id}} = req;
+    const {method, body, query: {id}} = req;
 
     switch (method) {
         case "GET": {
@@ -23,9 +23,12 @@ export default async function orderApi(req, res) {
 
             break;
         }
-        case "DELETE": {
+        case "PUT": {
             try {
                 
+                const updatedOrder = await Order.findByIdAndUpdate(id, body, {new: true});
+                res.status(200).json(updatedOrder);
+
             } catch(err) {
                 res.status(500).json(err.message);
             }

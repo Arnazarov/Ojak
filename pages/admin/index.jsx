@@ -7,11 +7,27 @@ const URI = process.env.NEXT_PUBLIC_URI;
 const Index = ({ products, orders }) => {
   const [productList, setProductList] = useState(products);
   const [orderList, setOrderList] = useState(orders);
+  const status = ['Preparing', 'On the way', 'Delivered'];
 
   const deleteBtnHandler = async (id) => {
     try {
       const { data } = await axios.delete(`${URI}/api/products/${id}`);
       setProductList(productList.filter((product) => product._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const editStatusHandler = async (id) => {
+    const orderToUpdate = orderList.filter((order) => order._id === id)[0];
+    const statusToUpdate = orderToUpdate.status;
+
+    try {
+      const { data } = await axios.put(`${URI}/api/orders/${id}`, {
+        status: statusToUpdate + 1,
+      });
+
+      setOrderList([...orderList.filter((order) => order._id !== id), data]);
     } catch (error) {
       console.log(error);
     }
@@ -76,16 +92,31 @@ const Index = ({ products, orders }) => {
             </tr>
           </thead>
           <tbody className={styles.tbody}>
-            <tr>
-              <td>0519898194</td>
-              <td>Omar Hayyam</td>
-              <td>$13.99</td>
-              <td>PayPal</td>
-              <td>Paid</td>
-              <td>
-                <button className={styles.buttonStatus}>Edit status</button>
-              </td>
-            </tr>
+            {orderList.map((order) => (
+              <tr key={order._id}>
+                <td>{order._id.slice(0, 8)}</td>
+                <td>{order.customer}</td>
+                <td>{order.total}</td>
+                <td>
+                  {order.payment === 0 ? (
+                    <span>PayPal/Paid</span>
+                  ) : 1 ? (
+                    <span>Venmo/Paid</span>
+                  ) : (
+                    <span>Debit/Paid</span>
+                  )}
+                </td>
+                <td>{status[order.status]}</td>
+                <td>
+                  <button
+                    className={styles.buttonStatus}
+                    onClick={() => editStatusHandler(order._id)}
+                  >
+                    Edit status
+                  </button>
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
