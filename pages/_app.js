@@ -2,7 +2,6 @@ import Layout from '../components/Layout'
 import '../styles/globals.css'
 import {Provider} from 'react-redux'
 import store from '../redux/store'
-import dbConnect from '../config/dbconfig';
 
 function MyApp({ Component, pageProps }) {
   
