@@ -112,7 +112,7 @@ const Index = ({ products, orders }) => {
                     className={styles.buttonStatus}
                     onClick={() => editStatusHandler(order._id)}
                   >
-                    Edit status
+                    Edit Status
                   </button>
                 </td>
               </tr>

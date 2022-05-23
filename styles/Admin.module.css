@@ -7,6 +7,10 @@
     flex:1;
 }
 
+.title {
+    text-align: center;
+}
+
 .tbody img {
     border-radius: 3px !important;
 }
