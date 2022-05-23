@@ -1,10 +1,10 @@
 import mongoose from "mongoose";
 import dbConnect from '../../../config/dbconfig';
 import Product from "../../../models/Product";
-dbConnect();
+
 
 const productsAPI = async (req, res) => {
-
+    dbConnect();
     const {method} = req;
     switch (method) {
         case "GET": {

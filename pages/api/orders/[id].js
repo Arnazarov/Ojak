@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import dbConnect from '../../../config/dbconfig';
 import Order from "../../../models/Order";
-dbConnect();
-export default async function orderApi(req, res) {
 
+export default async function orderApi(req, res) {
+    dbConnect();
     const {method, body, query: {id}} = req;
 
     switch (method) {

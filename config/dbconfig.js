@@ -1,29 +1,14 @@
-import mongoose from 'mongoose'
-import colors from 'colors'
+import mongoose from "mongoose";
+import colors from "colors";
 
-let cached = global.mongoose
-
-if (!cached) {
-  cached = global.mongoose = { conn: null, promise: null }
-}
-
-async function dbConnect() {
-  if (cached.conn) {
-    console.log(`MongoDB connected ${cached.conn.connection.host}`.blue.underline);
-    return cached.conn
-  }
-
-  if (!cached.promise) {
-    const opts = {
-      bufferCommands: false,
+async function mongoDB() {
+    try {
+        const conn = await mongoose.connect(process.env.NEXT_PUBLIC_MONGO_URI);
+        console.log(`MongoDB connected ${conn.connection.host}`.blue.underline);
     }
-
-    cached.promise = mongoose.connect(process.env.NEXT_PUBLIC_MONGO_URI, opts).then((mongoose) => {
-      return mongoose
-    })
-  }
-  cached.conn = await cached.promise
-  return cached.conn
+    catch(err) {
+        console.error(`Error: ${err.message}`.red.underline.bold)
+    }
 }
 
-export default dbConnect
+export default mongoDB

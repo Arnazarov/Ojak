@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 import dbConnect from '../../../config/dbconfig';
 import Product from "../../../models/Product";
-dbConnect();
-export default async function productApi(req, res) {
 
+export default async function productApi(req, res) {
+    dbConnect();
     const {method} = req;
     const {id} = req.query;
 
