@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import axios from 'axios';
 import { useState } from 'react';
 import Button from '../components/Button';
-import Add from '../components/Add';
+import Add from '../components/AddDishCard';
 
 const URI = process.env.NEXT_PUBLIC_URI;
 
