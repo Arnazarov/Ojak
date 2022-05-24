@@ -116,7 +116,7 @@ const Cart = () => {
             </tr>
           </thead>
           {products.map((product) => (
-            <tbody key={product.id} className={styles.tbody}>
+            <tbody key={product._id} className={styles.tbody}>
               <tr>
                 <td>
                   <div className={styles.imgContainer}>
