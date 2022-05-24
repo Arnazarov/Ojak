@@ -19,9 +19,6 @@ const ordersAPI = async (req, res) => {
             break;
         }
         case "POST": {
-            if (!token || token !== process.env.NEXT_PUBLIC_TOKEN) {
-                return res.status(401).json('Not authenticated!');
-            }
 
             try {
                 const order = await Order.create(req.body);

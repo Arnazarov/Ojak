@@ -25,10 +25,6 @@ export default async function orderApi(req, res) {
         }
         case "PUT": {
 
-            if (!token || token !== process.env.NEXT_PUBLIC_TOKEN) {
-                return res.status(401).json('Not authenticated!');
-            }
-
             try {            
                 const updatedOrder = await Order.findByIdAndUpdate(id, body, {new: true});
                 res.status(200).json(updatedOrder);
