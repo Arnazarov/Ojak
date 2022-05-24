@@ -5,7 +5,10 @@ import Product from "../../../models/Product";
 
 const productsAPI = async (req, res) => {
     dbConnect();
-    const {method} = req;
+    const {method, cookies} = req;
+    const {token} = cookies;
+
+
     switch (method) {
         case "GET": {
             try {
@@ -17,12 +20,18 @@ const productsAPI = async (req, res) => {
             break;
         }
         case "POST": {
-            try {
-                const product = await Product.create(req.body);
-                res.status(201).json(product);
-            } catch (error) {
-                res.status(500).json({message: error.message});
+
+            if (!token || token !== process.env.TOKEN) {
+                return res.status(401).json('Not authenticated!');
+            } else {
+                try {
+                    const product = await Product.create(req.body);
+                    res.status(201).json(product);
+                } catch (error) {
+                    res.status(500).json({message: error.message});
+                }
             }
+            
             break;
         }
         default: {

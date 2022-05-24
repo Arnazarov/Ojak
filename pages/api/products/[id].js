@@ -4,7 +4,8 @@ import Product from "../../../models/Product";
 
 export default async function productApi(req, res) {
     dbConnect();
-    const {method} = req;
+    const {method, cookies} = req;
+    const {token} = cookies;
     const {id} = req.query;
 
     switch (method) {
@@ -25,6 +26,11 @@ export default async function productApi(req, res) {
         }
         case "DELETE": {
             try {
+
+                if (!token || token !== process.env.TOKEN) {
+                    return res.status(401).json('Not authenticated!');
+                }
+
                 const product = await Product.findById(id);
 
                 if (product) {

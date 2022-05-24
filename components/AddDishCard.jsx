@@ -2,12 +2,12 @@ import { useState } from 'react';
 import styles from '../styles/AddDish.module.css';
 import axios from 'axios';
 import { useRouter } from 'next/router';
-
+const URI = process.env.NEXT_PUBLIC_URI;
 const Add = ({ setClose }) => {
   const [file, setFile] = useState(null);
   const [title, setTitle] = useState(null);
   const [desc, setDesc] = useState(null);
-  const [prices, setPrices] = useState([]);
+  const [price, setPrice] = useState([]);
   const [meatOptions, setMeatOptions] = useState([]);
   const [meat, setMeat] = useState(null);
 
@@ -17,9 +17,40 @@ const Add = ({ setClose }) => {
   };
 
   const pricesHandler = (e, index) => {
-    const currPrices = prices;
+    const currPrices = price;
     currPrices[index] = e.target.value;
-    setPrices(currPrices);
+    setPrice(currPrices);
+  };
+
+  const addBtnHandler = async () => {
+    const data = new FormData();
+    data.append('file', file);
+    data.append('upload_preset', 'uploads');
+    try {
+      const uploadRes = await axios.post(
+        `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDNAME}/image/upload`,
+        data
+      );
+
+      const { url } = uploadRes.data;
+      const newDish = {
+        title,
+        desc,
+        price,
+        meat: meatOptions,
+        img: url,
+      };
+
+      const created = await axios.post(`${URI}/api/products`, newDish);
+
+      if (created) {
+        setClose(true);
+      } else {
+        console.log(created);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -90,7 +121,7 @@ const Add = ({ setClose }) => {
             ))}
           </div>
         </div>
-        <button className={styles.addButton} onClick={() => {}}>
+        <button className={styles.addButton} onClick={addBtnHandler}>
           ADD
         </button>
       </div>

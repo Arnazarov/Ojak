@@ -38,7 +38,12 @@ const Product = ({ product }) => {
                 setSize(0);
               }}
             >
-              <Image src="/images/size.png" layout="fill" alt="" />
+              <Image
+                src="/images/size.png"
+                layout="fill"
+                alt=""
+                objectFit="contain"
+              />
               <span className={styles.number}>Small</span>
             </div>
             <div

@@ -5,7 +5,8 @@ import Order from "../../../models/Order";
 
 const ordersAPI = async (req, res) => {
 
-    const {method} = req;
+    const {method, cookies} = req;
+    const {token} = cookies;
     dbConnect();
     switch (method) {
         case "GET": {
@@ -18,6 +19,10 @@ const ordersAPI = async (req, res) => {
             break;
         }
         case "POST": {
+            if (!token || token !== process.env.TOKEN) {
+                return res.status(401).json('Not authenticated!');
+            }
+
             try {
                 const order = await Order.create(req.body);
                 res.status(201).json(order);

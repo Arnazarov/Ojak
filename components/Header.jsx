@@ -24,7 +24,7 @@ const Header = () => {
       </div>
       <div className={styles.item}>
         <ul className={styles.list}>
-          <Link href="/" passHref>
+          <Link href="/">
             <li className={styles.listItem}>Homepage</li>
           </Link>
           <li className={styles.listItem}>Menu</li>

@@ -3,9 +3,9 @@ import dbConnect from '../../../config/dbconfig';
 import Order from "../../../models/Order";
 
 export default async function orderApi(req, res) {
-    dbConnect();
-    const {method, body, query: {id}} = req;
-
+    dbConnect();    
+    const {method, body, cookies, query: {id}} = req;
+    const {token} = cookies;
     switch (method) {
         case "GET": {
             try {
@@ -24,8 +24,12 @@ export default async function orderApi(req, res) {
             break;
         }
         case "PUT": {
-            try {
-                
+
+            if (!token || token !== process.env.TOKEN) {
+                return res.status(401).json('Not authenticated!');
+            }
+
+            try {            
                 const updatedOrder = await Order.findByIdAndUpdate(id, body, {new: true});
                 res.status(200).json(updatedOrder);
 
