@@ -32,7 +32,7 @@ export async function getServerSideProps(context) {
 
   const myCookie = context.req?.cookies || '';
   let admin = false;
-  if (myCookie.token === process.env.TOKEN) {
+  if (myCookie.token === process.env.NEXT_PUBLIC_TOKEN) {
     admin = true;
   }
 

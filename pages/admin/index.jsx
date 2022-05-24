@@ -127,7 +127,7 @@ const Index = ({ products, orders }) => {
 export async function getServerSideProps(context) {
   const myCookie = context.req?.cookies || '';
 
-  if (myCookie.token != process.env.TOKEN) {
+  if (myCookie.token != process.env.NEXT_PUBLIC_TOKEN) {
     return {
       redirect: { destination: '/admin/login', permanent: false },
     };

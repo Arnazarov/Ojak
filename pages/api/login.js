@@ -7,8 +7,8 @@ export default function loginAPI(req, res ) {
         case "POST": {
             const {username, password} = body;
 
-            if (username === process.env.ADMIN_USERNAME && password === process.env.ADMIN_PASSWORD) {
-                res.setHeader("Set-Cookie", cookie.serialize("token", process.env.TOKEN, {
+            if (username === process.env.NEXT_PUBLIC_ADMIN_USERNAME && password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
+                res.setHeader("Set-Cookie", cookie.serialize("token", process.env.NEXT_PUBLIC_TOKEN, {
                     maxAge: 60* 60,
                     sameSite: "strict",
                     path: "/"
