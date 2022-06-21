@@ -1,34 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Ojak - Food Ordering App
 
-## Getting Started
+[Ojak App](https://ojak.herokuapp.com)
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
+- Admin Dashboard
+- Cart
+- Payment
+- Product/Food Page
+
+## Stack
+
+- [MongoDB](https://www.mongodb.com) - NoSQL database
+- [Next.js](https://nextjs.org) - React framework with additional features
+- [Redux](https://redux.js.org) - JavaScript library for managing and centralizing application state
+
+## Project structure
+
 ```
+$PROJECT_ROOT
+
+|   +-- components                     	// Next Components
+|   +-- config                          // MongoDB Configuration
+|   +-- models                          // Mongoose Models
+|   +-- pages                           
+|   |   +-- admin                       // Admin Page
+|   |   +-- api                         // API Routes
+|   |   +-- order                     	// Order Page
+|   |   +-- product                    	// Product Page
+|   |   +-- _app.js                    	// App Screen
+|   |   +-- cart.jsx                    // Cart Page
+|   |   +-- index.js                   	// App Entry Point
+|   +-- public                          // Static Files
+|   +-- redux                   	// Redux Toolkit
+|   +-- styles                    
+```
+
+## Packages/Modules utilized
+
+		- @fortawesome/react-fontawesome			: Font Awesome 5 React component using SVG with JS
+		- @paypal/react-paypal-js       			: React components for the PayPal JS SDK
+		- @reduxjs/toolkit					: toolset for efficient Redux development
+		- axios                                 	   	: promise based HTTP client for the browser and Node.js
+		- colors						: get colors in your node.js console
+		- cookie						: Basic HTTP cookie parser and serializer for HTTP servers.
+		- mongoose 						: MongoDB object modeling tool 
+		- react							: React is a JavaScript library for creating user interfaces.
+		- redux 						: manages and centralizes application state
+		- react-redux 						: React UI bindings layer for Redux 
+
+
+## Steps to Install & Run
+
+1.  Clone the code from this repo
+2.  Open terminal on frontend and backend folders and type `npm install #or yarn install`
+3.  Run the development server `npm start #or yarn dev`
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Homepage
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+![Home](./Home.png)
